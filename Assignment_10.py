@@ -54,7 +54,8 @@ def run():
     print("Sent message: " + msg)
     client.publish(topic,msg) #send student id to the topic
     time.sleep(4)
-    client.loop_stop()
+    client.loop_stop() #stop the loop
+    client.disconnect() #disconnect from the client
 
 if __name__ == '__main__':
     run()
