@@ -1,0 +1,17 @@
+---
+title: "Assignment 12"
+author: "Irem Begüm Gündüz"
+date: "14/07/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{python, file='assignment_12.py'}
+```
+
+```{python}
+run()
+```

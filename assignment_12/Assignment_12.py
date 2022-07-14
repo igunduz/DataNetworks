@@ -19,9 +19,11 @@ def connect_broker(client):
   return client
 
 def on_message(client, userdata, msg):  # The callback 
-    print("Topic: "+ msg.topic + " Message: " +   str(msg.payload.decode("utf-8")))  # Print a received msg
+    print("Topic: "+ msg.topic + " Message: " +   str(msg.payload.decode("utf-8")))  
+    # Print a received msg
     client.subscribe(str(msg.payload.decode("utf-8")))
     decoded_payload = str(msg.payload.decode("utf-8"))
+    #send CMD specific reply messages
     if decoded_payload.startswith("CMD"):
       messg = ""
       if decoded_payload == "CMD1":
@@ -38,8 +40,11 @@ def on_message(client, userdata, msg):  # The callback
         messg = "Girl"
       elif decoded_payload == "CMD7":
         messg = "Toy"
+      #create a new topic for CMD
       top = msg.topic + "/" + decoded_payload
+      #subscribe the new topic
       client.subscribe(top)
+      #send the message to the new topic
       client.publish(top,messg)
 
 
